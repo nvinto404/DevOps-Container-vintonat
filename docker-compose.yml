@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  nodejs:
+    image: node:latest
+    container_name: node-container
+    volumes:
+      - ./server.js:/app/server.js
+    working_dir: /app
+    command: npm start
+    ports:
+      - "3000:3000"
+    networks:
+      - webnetwork
+
+  postgres:
+    image: postgres:latest
+    container_name: postgres-container
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+    networks:
+      - webnetwork
+
+networks:
+  webnetwork:
+    driver: bridge

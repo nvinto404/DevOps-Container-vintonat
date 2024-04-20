@@ -8,8 +8,8 @@ const port = 3000;
 app.use(bodyParser.urlencoded({ extended: false }));
 
 const pool = new Pool({
-    user: 'postgres',
-    host: 'postgres-container',
+    user: 'admin',
+    host: 'postgres',
     database: 'postgres',
     password: 'admin',
     port: 5432,
